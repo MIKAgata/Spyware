@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 
 s = socket.socket()
-s.bind(('0.0.0.0', 4444))
+s.bind(('10.94.149.28', 4444))
 s.listen(1)
 conn, addr = s.accept()
 
