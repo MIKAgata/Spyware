@@ -13,3 +13,19 @@ High-performance, stealthy screen capture & streaming untuk penetration testing 
 | Live Metrics | FPS, RAM monitoring real-time |
 | Configurable | .env support, full customization |
 | Graceful Shutdown | SIGINT/SIGTERM handling |
+
+## Persyaratan Sistem
+| Platform | Status | Notes |
+| --- | --- | --- |
+| Windows 10/11 | Tested | Primary target |
+| Linux (Kali/Ubuntu) | Tested | X11/Wayland |
+| macOS | Partial | Screenshot limitations |
+
+#### Dependencies:
+Python 3.8+
+pillow
+opencv-python
+numpy
+python-dotenv
+psutil
+
