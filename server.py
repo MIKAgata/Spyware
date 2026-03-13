@@ -5,11 +5,9 @@ import numpy as np
 import struct
 import pickle
 
-# Ganti dengan alamat IP laptop ANDA
-SERVER_IP = '10.94.149.28'  # <-- GANTI DENGAN IP ANDA
+SERVER_IP = '10.94.149.28'  
 SERVER_PORT = 9999
 
-# Buat socket server
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((SERVER_IP, SERVER_PORT))
 server_socket.listen(1)
@@ -19,12 +17,12 @@ client_socket, addr = server_socket.accept()
 print(f"[+] Koneksi diterima dari {addr}")
 
 data = b""
-payload_size = struct.calcsize("Q") # Ukuran untuk menampung panjang data
+payload_size = struct.calcsize("Q") 
 
 while True:
-    # Baca panjang data yang akan dikirim (dalam bentuk struct)
+
     while len(data) < payload_size:
-        packet = client_socket.recv(4*1024) # Terima dalam potongan 4KB
+        packet = client_socket.recv(4*1024) 
         if not packet:
             break
         data += packet
@@ -35,7 +33,6 @@ while True:
     data = data[payload_size:]
     msg_size = struct.unpack("Q", packed_msg_size)[0]
 
-    # Baca data frame (gambar) sebesar msg_size
     while len(data) < msg_size:
         data += client_socket.recv(4*1024)
     if not data:
@@ -44,11 +41,9 @@ while True:
     frame_data = data[:msg_size]
     data = data[msg_size:]
 
-    # Deserialisasi frame
     frame = pickle.loads(frame_data)
     frame = cv2.imdecode(frame, cv2.IMREAD_COLOR)
 
-    # Tampilkan frame
     cv2.imshow('Menerima Streaming dari Teman', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break

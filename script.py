@@ -10,7 +10,7 @@ SERVER_PORT = 9999
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((SERVER_IP, SERVER_PORT))
-print(f"[*] ------ {SERVER_IP}:{SERVER_PORT}")
+print(f"[*] anda telah terhubung {SERVER_IP}:{SERVER_PORT}")
 
 try:
     while True:
