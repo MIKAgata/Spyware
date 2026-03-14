@@ -4,9 +4,10 @@ import cv2
 import numpy as np
 import struct
 import pickle
+import os
 
-SERVER_IP = '10.94.149.28'  
-SERVER_PORT = 9999
+SERVER_IP = os.getenv("SERVER_IP")
+SERVER_PORT = os.getenv("SERVER_PORT")
 
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((SERVER_IP, SERVER_PORT))
