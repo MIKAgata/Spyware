@@ -4,9 +4,10 @@ import numpy as np
 import pickle
 import struct
 from PIL import ImageGrab
+import os
 
-SERVER_IP = '10.94.149.28'
-SERVER_PORT = 9999
+SERVER_IP = os.getenv("SERVER_IP")
+SERVER_PORT = os.getenv("SERVER_PORT")
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.connect((SERVER_IP, SERVER_PORT))
